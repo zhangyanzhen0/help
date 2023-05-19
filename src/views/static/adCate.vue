@@ -54,7 +54,7 @@
 
 <script>
 import { defineComponent } from "vue"
-import { adCatePage, adCateDelId, adCateAdd, adCateEdit } from "../../http";
+import { adCatePage, adCateDelId, adCateAdd, adCateEdit } from "../../http/school";
 import { ElMessage } from 'element-plus'
 import {cloneDeep} from 'lodash-es'
 export default defineComponent({
