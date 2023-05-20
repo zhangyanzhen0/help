@@ -1,7 +1,7 @@
 <template>
   <router-link to="/sms_flash_promotion_session">    
   <!-- 在路由里面加入你的，然后to的值改成你的 -->
-  <h1>路径为:src/views/staitc/index</h1>
+  <h1>路径:src/views/staitc/index</h1>
     <el-button type="primary">
       前往
     </el-button>
