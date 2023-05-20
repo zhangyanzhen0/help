@@ -19,9 +19,9 @@ const routes = [
     component: Index, //key:value  默认//页面组件 components 普通组件 页面组件和普通组件是一对多
   },
   {
-    path: '/backend_api',
-    name: 'backend_api',
-    component: () => import('@/views/admin/backend_api.vue'),
+    path: '/cms_subject_category',
+    name: 'cms_subject_category',
+    component: () => import('@/views/admin/cms_subject_category.vue'),
   },
   {
     path: '/adcate',
