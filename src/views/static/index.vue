@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/cms_subject_category">    
+  <router-link to="/sms_flash_promotion_session">    
   <!-- 在路由里面加入你的，然后to的值改成你的 -->
   <h1>路径为:src/views/staitc/index</h1>
     <el-button type="primary">

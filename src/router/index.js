@@ -24,6 +24,11 @@ const routes = [
     component: () => import('@/views/admin/cms_subject_category.vue'),
   },
   {
+    path: '/sms_flash_promotion_session',
+    name: 'sms_flash_promotion_session',
+    component: () => import('@/views/admin/sms_flash_promotion_session.vue'),
+  },
+  {
     path: '/adcate',
     name: 'adCate',
     component: () => import('@/views/static/adCate.vue'), // 懒加载
