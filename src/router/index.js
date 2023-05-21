@@ -24,10 +24,11 @@ const routes = [
     component: () => import('@/views/admin/ums_member_level.vue'),
   },
   {
-    path: '/pms_product_attribute_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
-    name: 'pms_product_attribute_category', //命名路由
-    component: () => import('@/views/admin/pms_product_attribute_category.vue'),
+    path: '/ums_member_tag', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'ums_member_tag', //命名路由
+    component: () => import('@/views/admin/ums_member_tag.vue'),
   },
+  
   {
     path: '/cms_subject_category',
     name: 'cms_subject_category',
