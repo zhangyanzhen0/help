@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/ums_member_tag">    
+  <router-link to="/pms_feight_template">    
   <!-- 在路由里面加入你的，然后to的值改成你的 -->
   <h1>路径:src/views/staitc/index</h1>
     <el-button type="primary">
