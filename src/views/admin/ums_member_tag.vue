@@ -18,8 +18,8 @@
                        label="id"></el-table-column>
       <el-table-column prop="finishOrderAmount"
                        label="finishOrderAmount"></el-table-column>
-      <el-table-column prop="finishOrderAmount"
-                       label="finishOrderAmount"></el-table-column>
+      <el-table-column prop="finishOrderCount"
+                       label="finishOrderCount"></el-table-column>
       <el-table-column prop="name"
                        label="name"></el-table-column>
 
@@ -96,8 +96,8 @@
         <el-form-item label="finishOrderAmount">
           <el-input v-model="editItem.finishOrderAmount"></el-input>
         </el-form-item>
-        <el-form-item label="finishOrderAmount">
-          <el-input-number v-model="editItem.finishOrderAmount"></el-input-number>
+        <el-form-item label="finishOrderCount">
+          <el-input-number v-model="editItem.finishOrderCount"></el-input-number>
         </el-form-item>
 
         <el-form-item label="name">
@@ -311,7 +311,7 @@ export default {
       ElMessage.success("添加数据ing");
       const newAPI = {
         "finishOrderAmount": 0,
-        "finishOrderAmount": 0,
+        "finishOrderCount": 0,
         "id": 0,
         "name": "",
         "isNew": true,

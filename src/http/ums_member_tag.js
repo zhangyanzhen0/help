@@ -24,7 +24,7 @@ const One = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/ums-member-level/one/' + id,
+      url: '/mall/ums-member-tag/one/' + id,
       method: 'get',
     })
     return response
@@ -40,7 +40,7 @@ const Del = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/ums-member-level/del/' + id,
+      url: '/mall/ums-member-tag/del/' + id,
       method: 'get',
     })
     return response
@@ -56,7 +56,7 @@ const Edit = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/ums-member-level/edit',
+      url: '/mall/ums-member-tag/edit',
       method: 'post',
       data,
     })
@@ -72,7 +72,7 @@ const Add = async (data) => {
   showLoading() // 显示加载动画
   try {
     const response = await api.request({
-      url: '/mall/ums-member-level/add',
+      url: '/mall/ums-member-tag/add',
       method: 'post',
       data,
     })
@@ -89,7 +89,7 @@ const Page = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/ums-member-level/page',
+      url: '/mall/ums-member-tag/page',
       method: 'post',
       data,
     })

@@ -211,7 +211,7 @@ export default {
     filteredtableData () {
       if (this.searchText && this.tableData && this.tableData.length > 0) {
         return this.tableData.filter(item => {
-          return String(item.id).includes(String(this.searchText));
+          return String(item.name).includes(String(this.searchText));
         });
       } else {
         return this.tableData || [];

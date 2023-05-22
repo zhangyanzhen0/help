@@ -43,7 +43,6 @@ const routes = [
     name: 'ums_member_tag', //命名路由
     component: () => import('@/views/admin/ums_member_tag.vue'),
   },
-  
   {
     path: '/cms_subject_category',
     name: 'cms_subject_category',
@@ -55,48 +54,10 @@ const routes = [
     component: () => import('@/views/admin/sms_flash_promotion_session.vue'),
   },
   {
-    path: '/adcate',
-    name: 'adCate',
-    component: () => import('@/views/static/adCate.vue'), // 懒加载
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/static/login.vue'), // 懒加载
   },
-  {
-    path: '/admin',
-    name: 'admin',
-    component: LayoutAdmin,
-    children: [
-      {
-        path: '',
-        name: 'admin-index',
-        component: () => import('@/views/admin/index.vue'),
-      },
-      {
-        path: 'info',
-        name: 'admin-info',
-        component: () => import('@/views/admin/info.vue'),
-      },
-      {
-        path: 'logout',
-        name: 'admin-logout',
-        component: () => import('@/views/admin/logout.vue'),
-      },
-      {
-        path: 'changepassword',
-        name: 'admin-changepassword',
-        component: () => import('@/views/admin/changepassword.vue'),
-      },
-      {
-        path: 'forgetpassword',
-        name: 'admin-forgetpassword',
-        component: () => import('@/views/admin/forgetpassword.vue'),
-      },
-    ],
-  },
-
   {
     path: '/:pathMatch(.*)*',
     name: '404',

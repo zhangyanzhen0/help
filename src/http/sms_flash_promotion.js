@@ -7,8 +7,8 @@ const showLoading = () => {
   // 创建加载实例并显示加载动画
   loadingInstance = ElLoading.service({
     lock: true,
-    text: 'OnLoading...', // 可自定义加载提示文本
-    spinner: 'spinner', // 加载样式为旋转图标
+    text: '加载中...', // 可自定义加载提示文本
+    spinner: 'wave', // 加载样式为旋转图标
   })
 }
 
@@ -24,7 +24,7 @@ const One = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-subject-category/one/' + id,
+      url: '/mall/sms-flash-promotion/one/' + id,
       method: 'get',
     })
     return response
@@ -40,7 +40,7 @@ const Del = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-subject-category/del/' + id,
+      url: '/mall/sms-flash-promotion/del/' + id,
       method: 'get',
     })
     return response
@@ -56,7 +56,7 @@ const Edit = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-subject-category/edit',
+      url: '/mall/sms-flash-promotion/edit',
       method: 'post',
       data,
     })
@@ -73,7 +73,7 @@ const Add = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-subject-category/add',
+      url: '/mall/sms-flash-promotion/add',
       method: 'post',
       data,
     })
@@ -90,7 +90,7 @@ const Page = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-subject-category/page',
+      url: '/mall/sms-flash-promotion/page',
       method: 'post',
       data,
     })
