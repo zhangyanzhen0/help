@@ -49,6 +49,11 @@ const routes = [
     component: () => import('@/views/admin/ums_member_tag.vue'),
   },
   {
+    path: '/ums_menu_controller', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'ums_menu_controller', //命名路由
+    component: () => import('@/views/admin/ums_menu_controller.vue'),
+  },
+  {
     path: '/cms_subject_category',
     name: 'cms_subject_category',
     component: () => import('@/views/admin/cms_subject_category.vue'),
