@@ -23,6 +23,11 @@ const routes = [
     name: 'ums_member_level', //命名路由
     component: () => import('@/views/admin/ums_member_level.vue'),
   },
+    {
+    path: '/sms_coupon', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'sms_coupon', //命名路由
+    component: () => import('@/views/admin/sms_coupon.vue'),
+  },
   {
     path: '/pms_feight_template', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'pms_feight_template', //命名路由
