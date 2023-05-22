@@ -1,14 +1,11 @@
 <template>
-  <div class="route-buttons">
-    <router-link v-for="(route, index) in routes"
-                 :key="index"
-                 :to="route.path"
-                 class="route-button">
-      <el-button type="danger"
-                 round
-                 plain>{{ route.name }}</el-button>
-    </router-link>
-  </div>
+  <router-link to="/ums_menu_controller">    
+  <!-- 在路由里面加入你的，然后to的值改成你的 -->
+  <h1>路径:src/views/staitc/index</h1>
+    <el-button type="primary">
+      前往
+    </el-button>
+  </router-link>
 </template>
 
 <script>
