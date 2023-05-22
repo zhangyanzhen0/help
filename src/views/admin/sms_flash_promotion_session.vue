@@ -1,47 +1,76 @@
 <template>
   <div>
-    <el-input v-model="searchText" placeholder="请输入搜索关键字" clearable @clear="clearSearch" @keyup.enter="performSearch"
-      style="margin-bottom: 20px;"></el-input>
+    <el-input v-model="searchText"
+              placeholder="请输入搜索关键字"
+              clearable
+              @clear="clearSearch"
+              @keyup.enter="performSearch"
+              style="margin-bottom: 20px;"></el-input>
 
-    <el-table :data="paginatedData" :header-cell-style="
+    <el-table :data="paginatedData"
+              :header-cell-style="
       {
         background: '#eef1f6',
         color: '#606266'
-      }" borde>
-      <el-table-column prop="id" label="Items"></el-table-column>
-      <el-table-column prop="memberId" label="会员id"></el-table-column>
-      <el-table-column prop="memberPhone" label="会员电话">
+      }"
+              borde>
+      <el-table-column prop="id"
+                       label="Items"></el-table-column>
+      <el-table-column prop="memberId"
+                       label="会员id"></el-table-column>
+      <el-table-column prop="memberPhone"
+                       label="会员电话">
       </el-table-column>
 
-      <el-table-column prop="productId" label="工厂id"></el-table-column>
-      <el-table-column prop="productName" label="工厂名"></el-table-column>
-      <el-table-column prop="sendTime" label="派发时间"></el-table-column>
-      <el-table-column prop="subscribeTime" label="subscribeTime"></el-table-column>
+      <el-table-column prop="productId"
+                       label="工厂id"></el-table-column>
+      <el-table-column prop="productName"
+                       label="工厂名"></el-table-column>
+      <el-table-column prop="sendTime"
+                       label="派发时间"></el-table-column>
+      <el-table-column prop="subscribeTime"
+                       label="subscribeTime"></el-table-column>
       <el-table-column label="操作">
         <template #default="{ row }">
-          <el-button v-if="row.isNew" class="custom-button" type="success" circle @click="Insert(row)">
+          <el-button v-if="row.isNew"
+                     class="custom-button"
+                     type="success"
+                     circle
+                     @click="Insert(row)">
             <el-icon>
               <Position />
             </el-icon>
           </el-button>
 
-          <el-button v-else class="custom-button" type="warning" circle @click="Alter(row)">
+          <el-button v-else
+                     class="custom-button"
+                     type="warning"
+                     circle
+                     @click="Alter(row)">
             <el-icon>
               <Position />
             </el-icon>
           </el-button>
 
-          <el-button type="primary" circle @click="openEditDialog(row)">
+          <el-button type="primary"
+                     circle
+                     @click="openEditDialog(row)">
             <el-icon>
               <EditPen />
             </el-icon>
           </el-button>
-          <el-button v-if="row.isNew" type="danger" circle @click="delND(row)">
+          <el-button v-if="row.isNew"
+                     type="danger"
+                     circle
+                     @click="delND(row)">
             <el-icon>
               <Delete />
             </el-icon>
           </el-button>
-          <el-button v-else type="danger" circle @click="Del(row)">
+          <el-button v-else
+                     type="danger"
+                     circle
+                     @click="Del(row)">
             <el-icon>
               <Delete />
             </el-icon>
@@ -50,11 +79,15 @@
       </el-table-column>
     </el-table>
 
-    <el-pagination :current-page="currentPage" :page-size="pageSize" :total="filteredtableData.length"
-      @current-change="handlePageChange">
+    <el-pagination :current-page="currentPage"
+                   :page-size="pageSize"
+                   :total="filteredtableData.length"
+                   @current-change="handlePageChange">
     </el-pagination>
 
-    <el-dialog class="form" v-model="editDialogVisible" @close="editDialogVisible = false">
+    <el-dialog class="form"
+               v-model="editDialogVisible"
+               @close="editDialogVisible = false">
       <el-form>
         <el-form-item label="memberId">
           <el-input v-model="editItem.memberId"></el-input>
@@ -86,10 +119,14 @@
       <div slot="footer">
         <el-button @click="editDialogVisible = false">取消</el-button>
 
-        <el-button type="primary" @click="saveEdit">保存</el-button>
+        <el-button type="primary"
+                   @click="saveEdit">保存</el-button>
       </div>
     </el-dialog>
-    <el-button type="primary" circle @click="addAPI" style="margin-top: 10px;">
+    <el-button type="primary"
+               circle
+               @click="addAPI"
+               style="margin-top: 10px;">
       <el-icon>
         <CirclePlusFilled />
       </el-icon>
@@ -102,7 +139,7 @@ import { ElMessage, ElMessageBox, roleTypes } from 'element-plus';
 
 
 export default {
-  data() {
+  data () {
     return {
       json: {
         current: 1,
@@ -122,12 +159,12 @@ export default {
     }
   },
   computed: {
-    paginatedData() {
+    paginatedData () {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
       return this.filteredtableData.slice(startIndex, endIndex);
     },
-    filteredtableData() {
+    filteredtableData () {
       if (this.searchText) {
         return this.tableData.filter(item => {
           return String(item.id).includes(String(this.searchText));
@@ -138,16 +175,16 @@ export default {
     }
   },
   methods: {
-    openEditDialog(row) {
+    openEditDialog (row) {
       this.editItem = { ...row }; // 创建一个副本以防止直接修改原始数据
       this.editDialogVisible = true;
     },
-    handlePageChange(currentPage) {
+    handlePageChange (currentPage) {
       this.currentPage = currentPage;
     },
 
 
-    saveEdit() {
+    saveEdit () {
       console.log(this.editItem);
       ElMessageBox.confirm('确定修改吗？', '提示', {
         confirmButtonText: '确定',
@@ -175,10 +212,10 @@ export default {
     },
 
 
-    fetchData() {
+    fetchData () {
       api.Page(this.json)
         .then(response => {
-          this.tableData = response.data.records;
+          this.tableData = response.data.data.page.records || response.data.records;
           console.log(response);
           ElMessage.success('刷新成功！');
         })
@@ -189,7 +226,7 @@ export default {
         });
     },
 
-    Insert(row) {
+    Insert (row) {
       api.Add(row)
         .then((response) => {
           delete row.isNew
@@ -202,7 +239,7 @@ export default {
           console.error('保存修改失败:', error);
         });
     },
-    Alter(row) {
+    Alter (row) {
       api.Edit(row)
         .then((response) => {
           // 修改保存成功，可以进行一些操作，例如提示用户保存成功或更新本地数据
@@ -219,7 +256,7 @@ export default {
         });
     },
 
-    Del(row) {
+    Del (row) {
       ElMessageBox.confirm('确定要删除吗？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -246,7 +283,7 @@ export default {
         // 取消删除操作
       });
     },
-    delND(row) {
+    delND (row) {
       // 在这里处理删除逻辑，可以在确认后从数据源中删除API对象或向服务器发送删除请求
       // 这里使用 Element Plus 的 ElMessageBox 弹窗组件来确认删除操作
       ElMessageBox.confirm('确定要删除吗？', '提示', {
@@ -273,7 +310,7 @@ export default {
     },
 
     // 可以添加其他方法来实现创建和查看功能
-    addAPI() {
+    addAPI () {
       ElMessage.success("添加数据ing");
       const newAPI = {
         "id": 0,
@@ -291,7 +328,7 @@ export default {
     },
 
   },
-  created() {
+  created () {
     this.fetchData()
   }
 }

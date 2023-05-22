@@ -249,7 +249,7 @@ export default {
     fetchData () {
       api.Page(this.json)
         .then(response => {
-          this.tableData = response.data.records;
+          this.tableData = response.data.data.page.records || response.data.records;
           console.log(response);
           ElMessage.success('刷新成功！');
 
