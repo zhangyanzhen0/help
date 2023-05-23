@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
     <el-input v-model="searchText" placeholder="请输入搜索关键字" clearable @clear="clearSearch" @keyup.enter="performSearch"
       style="margin-bottom: 20px;"></el-input>
 
@@ -7,43 +7,41 @@
         background: '#eef1f6',
         color: '#606266'
       }" borde>
-      <el-table-column prop="id" label="Items"></el-table-column>
-      <el-table-column prop="name" label="名称"></el-table-column>
-      <el-table-column prop="icon" label="图标样式">
+      <el-table-column prop="basePath" label="basePath"></el-table-column>
+      <el-table-column prop="description" label="操作描述"></el-table-column>
+      <el-table-column prop="id" label="id"></el-table-column>
+      <el-table-column prop="ip" label="请求ip地址"></el-table-column>
+      <el-table-column prop="method" label="请求类型"></el-table-column>
+      <el-table-column prop="spendTime" label="消耗时间"></el-table-column>
+      <el-table-column prop="startTime" label="操作时间"></el-table-column>
+      <el-table-column prop="uri" label="uri"></el-table-column>
+      <el-table-column prop="url" label="url"></el-table-column>
+      <el-table-column prop="username" label="操作用户"></el-table-column>
+      <el-table-column width="150rpx" label="操作">
         <template #default="{ row }">
-          <img v-if="isNaN(Number(row.icon, 10))" :src="row.icon" alt="图标" width="30" height="30">
-          <img v-else src="../../imgs/1.png" alt="图标" width="30" height="30">
-        </template>
-      </el-table-column>
-
-      <el-table-column prop="subjectCount" label="主题数量"></el-table-column>
-      <el-table-column prop="showStatus" label="显示状态"></el-table-column>
-      <el-table-column prop="sort" label="排序"></el-table-column>
-      <el-table-column label="操作">
-        <template #default="{ row }">
-          <el-button v-if="row.isNew" class="custom-button" type="success" circle @click="Insert(row)">
+          <el-button v-if="row.isNew" size="mini" class="custom-button" type="success" circle @click="Insert(row)">
             <el-icon>
               <Position />
             </el-icon>
           </el-button>
 
-          <el-button v-else class="custom-button" type="warning" circle @click="Alter(row)">
+          <el-button v-else class="custom-button" size="mini" type="warning" circle @click="Alter(row)">
             <el-icon>
               <Position />
             </el-icon>
           </el-button>
 
-          <el-button type="primary" circle @click="openEditDialog(row)">
+          <el-button type="primary" size="mini" circle @click="openEditDialog(row)">
             <el-icon>
               <EditPen />
             </el-icon>
           </el-button>
-          <el-button v-if="row.isNew" type="danger" circle @click="delND(row)">
+          <el-button v-if="row.isNew" size="mini" type="danger" circle @click="delND(row)">
             <el-icon>
               <Delete />
             </el-icon>
           </el-button>
-          <el-button v-else type="danger" circle @click="Del(row)">
+          <el-button v-else type="danger" size="mini" circle @click="Del(row)">
             <el-icon>
               <Delete />
             </el-icon>
@@ -52,49 +50,60 @@
       </el-table-column>
     </el-table>
 
+
     <el-pagination :current-page="currentPage" :page-size="pageSize" :total="filteredtableData.length"
       @current-change="handlePageChange">
     </el-pagination>
 
     <el-dialog class="form" v-model="editDialogVisible" @close="editDialogVisible = false">
       <el-form>
-        <el-form-item label="图标名称">
-          <el-select v-model="editItem.name" placeholder="请选择">
-            <el-option v-for="option in nameOptions" :key="option.value" :label="option.label"
-              :value="option.value"></el-option>
-          </el-select> </el-form-item>
-
-        <el-form-item label="图标路径">
-          <el-upload action="/upload" v-model="editItem.icon" list-type="picture" :auto-upload="false">
-            <el-button slot="trigger" size="small" circle type="primary"><el-icon> <el-icon>
-                  <Upload />
-                </el-icon></el-icon></el-button>
-          </el-upload>
-
+        <el-form-item label="basePath">
+          <el-input v-model="editItem.basePath"></el-input>
         </el-form-item>
 
-        <el-form-item label="主题数量">
-          <el-input-number v-model="editItem.subjectCount"></el-input-number>
+        <el-form-item label="操作描述">
+          <el-input v-model="editItem.description"></el-input>
         </el-form-item>
 
-        <el-form-item label="显示状态">
-          <el-radio-group v-model="editItem.showStatus">
-            <el-radio :label="1">显示</el-radio>
-            <el-radio :label="0">隐藏</el-radio>
-          </el-radio-group>
+        <el-form-item label="id">
+          <el-input v-model="editItem.id"></el-input>
         </el-form-item>
 
-        <el-form-item label="排序顺序">
-          <el-input-number v-model="editItem.sort"></el-input-number>
+        <el-form-item label="请求ip地址">
+          <el-input v-model="editItem.ip"></el-input>
+        </el-form-item>
+
+        <el-form-item label="请求类型">
+          <el-input v-model="editItem.method"></el-input>
+        </el-form-item>
+
+        <el-form-item label="消耗时间">
+          <el-input v-model="editItem.spendTime"></el-input>
+        </el-form-item>
+
+        <el-form-item label="操作时间">
+          <el-input v-model="editItem.startTime"></el-input>
+        </el-form-item>
+
+        <el-form-item label="uri">
+          <el-input v-model="editItem.uri"></el-input>
+        </el-form-item>
+
+        <el-form-item label="url">
+          <el-input v-model="editItem.url"></el-input>
+        </el-form-item>
+        <el-form-item label="操作用户">
+          <el-input v-model="editItem.username"></el-input>
         </el-form-item>
       </el-form>
+
       <div slot="footer">
         <el-button @click="editDialogVisible = false">取消</el-button>
 
         <el-button type="primary" @click="saveEdit">保存</el-button>
       </div>
     </el-dialog>
-    <el-button type="primary" circle @click="addAPI" style="margin-top: 10px;">
+    <el-button type="primary" circle size="large" @click="addAPI" style="margin-top: 20px;margin-left: 50%;">
       <el-icon>
         <CirclePlusFilled />
       </el-icon>
@@ -102,30 +111,20 @@
   </div>
 </template>
 <script>
-import api from '@/http/cms_subject_category.js'
-import { ElMessage, ElMessageBox, roleTypes } from 'element-plus';
+import api from '@/http/cms_log.js'
+import {
+  ElMessage,
+  ElMessageBox,
+  roleTypes
+} from 'element-plus';
 
-const dataCache = {
-  tableData: []
-}
+
 export default {
   data() {
     return {
-      nameOptions: [
-        { label: '家具', value: '家具' },
-        { label: '保健品', value: '保健品' },
-        { label: '饮料', value: '饮料' },
-        { label: '电子产品', value: '电子产品' },
-        { label: '服装', value: '服装' },
-        { label: '美妆', value: '美妆' },
-        { label: '食品', value: '食品' },
-        { label: '汽车', value: '汽车' },
-        { label: '旅游', value: '旅游' },
-        { label: '体育用品', value: '体育用品' }
-      ],
       json: {
-        current: 1,
-        size: 999
+        "current": 1,
+        "size": 99
       },
 
       searchText: '',
@@ -147,18 +146,21 @@ export default {
       return this.filteredtableData.slice(startIndex, endIndex);
     },
     filteredtableData() {
-      if (this.searchText) {
+      if (this.searchText && this.tableData && this.tableData.length > 0) {
         return this.tableData.filter(item => {
           return String(item.name).includes(String(this.searchText));
         });
       } else {
-        return this.tableData;
+        return this.tableData || [];
       }
     }
+
   },
   methods: {
     openEditDialog(row) {
-      this.editItem = { ...row }; // 创建一个副本以防止直接修改原始数据
+      this.editItem = {
+        ...row
+      }; // 创建一个副本以防止直接修改原始数据
       this.editDialogVisible = true;
     },
     handlePageChange(currentPage) {
@@ -198,11 +200,8 @@ export default {
       api.Page(this.json)
         .then(response => {
           this.tableData = response.data.data.page.records || response.data.records;
-          console.log(response);
+          console.log(this.tableData);
           ElMessage.success('刷新成功！');
-
-          // 缓存数据
-          dataCache.tableData = this.tableData;
         })
         .catch(error => {
           ElMessage.error('刷新失败，请检查网络！');
@@ -298,14 +297,19 @@ export default {
     addAPI() {
       ElMessage.success("添加数据ing");
       const newAPI = {
-        icon: '',
-        id: 0,
-        name: '',
-        showStatus: 0,
-        sort: 0,
-        subjectCount: 0,
-        isNew: true,
-      };
+        "basePath": "",
+        "description": "",
+        "id": 0,
+        "ip": "",
+        "method": "",
+        "spendTime": 0,
+        "startTime": 0,
+        "uri": "",
+        "url": "",
+        "username": "",
+        "isNew": true,
+
+      }
       this.tableData.push(newAPI);
       const lastPage = Math.ceil(this.tableData.length / this.pageSize);
       this.handlePageChange(lastPage);
@@ -313,18 +317,15 @@ export default {
 
   },
   created() {
-
     this.fetchData()
-
   }
 }
 </script>
 
-<style >
+<style>
 body {
   margin: 0;
   padding: 0;
-  background-image: url("@/imgs/keli.png");
   background-size: cover;
   opacity: 0.9 !important;
   /* 使用 !important 提高优先级 */
