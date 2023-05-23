@@ -43,6 +43,11 @@ const routes = [
     component: () => import('@/views/admin/ums_member_level.vue'),
   },
   {
+    path: '/cms-prefrence-area', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'cms-prefrence-area', //命名路由
+    component: () => import('@/views/admin/cms-prefrence-area.vue'),
+  },
+  {
     path: '/sms_coupon', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'sms_coupon', //命名路由
     component: () => import('@/views/admin/sms_coupon.vue'),
