@@ -7,10 +7,24 @@
         background: '#eef1f6',
         color: '#606266'
       }" borde>
-
-      <el-table-column prop="description" label="description"></el-table-column>
-      <el-table-column prop="icon" label="icon"></el-table-column>
       <el-table-column prop="id" label="id"></el-table-column>
+      <el-table-column prop="description" label="description"></el-table-column>
+      <el-table-column prop="icon" label="icon">
+        <template #default="{ row }">
+          <img v-if="isNaN(Number(row.icon,10))"
+               :src="row.icon"
+               alt="图标"
+               width="30"
+               height="30">
+          <img v-else
+               src="../../imgs/1.png"
+               alt="图标"
+               width="30"
+               height="30">
+        </template>
+
+
+      </el-table-column>
       <el-table-column prop="keywords" label="keywords"></el-table-column>
       <el-table-column prop="level" label="level"></el-table-column>
       <el-table-column prop="name" label="name"></el-table-column>

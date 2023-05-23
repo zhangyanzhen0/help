@@ -24,7 +24,7 @@ const One = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/pms_product_category/one/' + id,
+      url: '/mall/pms-product-category/one/' + id,
       method: 'get',
     })
     return response
@@ -40,7 +40,7 @@ const Del = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/pms_product_category/del/' + id,
+      url: '/mall/pms-product-category/del/' + id,
       method: 'get',
     })
     return response
@@ -56,7 +56,7 @@ const Edit = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/pms_product_category/edit',
+      url: '/mall/pms-product-category/edit',
       method: 'post',
       data,
     })
@@ -72,7 +72,7 @@ const Add = async (data) => {
   showLoading() // 显示加载动画
   try {
     const response = await api.request({
-      url: '/mall/pms_product_category/add',
+      url: '/mall/pms-product-category/add',
       method: 'post',
       data,
     })
@@ -89,7 +89,7 @@ const Page = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/pms_product_category/page',
+      url: '/mall/pms-product-category/page',
       method: 'post',
       data,
     })

@@ -1,13 +1,16 @@
 <template>
-  <router-link to="/ums_menu_controller">    
-  <!-- 在路由里面加入你的，然后to的值改成你的 -->
-  <h1>路径:src/views/staitc/index</h1>
-    <el-button type="primary">
-      前往
-    </el-button>
-  </router-link>
+  <div class="route-buttons">
+    <router-link v-for="(route, index) in routes"
+                 :key="index"
+                 :to="route.path"
+                 class="route-button">
+      <el-button type="danger"
+                 round
+                 plain>#{{ route.name }}</el-button>
+    </router-link>
+  </div>
 </template>
-
+// 这里不用改了，在路由里面添加你的条目这里会自动多一个按钮，点击即可进入你的路由
 <script>
 export default {
   data () {
@@ -44,8 +47,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  height: 100vh; /* 可以根据需要设置高度 */
+  gap: 100px; /* Reduce the gap to 5 pixels */
+  height: 100vh;
 }
 
 .print-button {
