@@ -33,25 +33,62 @@
       <el-table-column width="100rpx"
                        prop="commentGrowthPoint"
                        label="评价成长值"></el-table-column>
+
       <el-table-column width="100rpx"
                        prop="priviledgeFreeFreight"
-                       label="免邮特权"></el-table-column>
+                       label="免邮特权">
+        <template #default="{ row }">
+          <span v-if="row.priviledgeFreeFreight == 0">否</span>
+          <span v-else-if="row.priviledgeFreeFreight==null"></span>
+          <span v-else>是</span>
+        </template>
+      </el-table-column>
+
       <el-table-column width="100rpx"
                        prop="priviledgeSignIn"
-                       label="签到特权"></el-table-column>
+                       label="签到特权">
+        <template #default="{ row }">
+          <span v-if="row.priviledgeSignIn == 0">否</span>
+          <span v-else-if="row.priviledgeSignIn==null"></span>
+          <span v-else>是</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="priviledgeComment"
-                       label="评论奖励特权"> </el-table-column>
+                       label="评论奖励特权">
+        <template #default="{ row }">
+          <span v-if="row.priviledgeComment == 0">否</span>
+          <span v-else-if="row.priviledgeComment==null"></span>
+          <span v-else>是</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="priviledgePromotion"
-                       label="专项活动特权"></el-table-column>
+                       label="专项活动特权">
+        <template #default="{ row }">
+          <span v-if="row.priviledgePromotion == 0">否</span>
+          <span v-else-if="row.priviledgePromotion==null"></span>
+          <span v-else>是</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="priviledgeMemberPrice"
-                       label="会员价格特权"></el-table-column>
+                       label="会员价格特权">
+        <template #default="{ row }">
+          <span v-if="row.priviledgeMemberPrice == 0">否</span>
+          <span v-else-if="row.priviledgeMemberPrice==null"></span>
+          <span v-else>是</span>
+        </template>
+      </el-table-column>
       <el-table-column width="100rpx"
                        prop="priviledgeBirthday"
-                       label="生日特权"></el-table-column>
+                       label="生日特权">
+        <template #default="{ row }">
+          <span v-if="row.priviledgeBirthday == 0">否</span>
+          <span v-else-if="row.priviledgeBirthday==null"></span>
+          <span v-else>是</span>
+        </template>
+      </el-table-column>
       <el-table-column width="100rpx"
                        prop="note"
                        label="备注"></el-table-column>
-
       <el-table-column width="150rpx"
                        label="操作">
         <template #default="{ row }">
@@ -115,42 +152,67 @@
 
     <el-dialog class="form"
                v-model="editDialogVisible"
+               center
                @close="editDialogVisible = false">
-      <el-form>
-        <el-form-item label="name">
+      <el-form >
+        <el-form-item label="会员名">
           <el-input v-model="editItem.name"></el-input>
         </el-form-item>
-        <el-form-item label="growthPoint">
+        <el-form-item label="成长点">
           <el-input v-model="editItem.growthPoint"></el-input>
         </el-form-item>
-        <el-form-item label="freeFreightPoint">
+
+        <el-form-item label="默认等级">
+          <el-input-number v-model="editItem.defaultStatus"></el-input-number>
+        </el-form-item>
+
+        <el-form-item label="免运费标准">
           <el-input-number v-model="editItem.freeFreightPoint"></el-input-number>
         </el-form-item>
 
-        <el-form-item label="commentGrowthPoint">
+        <el-form-item label="评价成长值">
           <el-input v-model="editItem.commentGrowthPoint"></el-input>
         </el-form-item>
 
-        <el-form-item label="priviledgeFreeFreight">
-          <el-input v-model="editItem.priviledgeFreeFreight"></el-input>
-        </el-form-item>
-        <el-form-item label="priviledgeSignIn">
-          <el-input v-model="editItem.priviledgeSignIn"></el-input>
+        <el-form-item label="免邮特权">
+          <el-radio-group v-model="editItem.priviledgeFreeFreight">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="priviledgeComment">
-          <el-input v-model="editItem.priviledgeComment"></el-input>
+        <el-form-item label="签到特权">
+          <el-radio-group v-model="editItem.priviledgeSignIn">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
         </el-form-item>
-        <el-form-item label="priviledgePromotion">
-          <el-input v-model="editItem.priviledgePromotion"></el-input>
+
+        <el-form-item label="评论奖励特权">
+          <el-radio-group v-model="editItem.priviledgeComment">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
         </el-form-item>
-        <el-form-item label="priviledgeMemberPrice">
-          <el-input v-model="editItem.priviledgeMemberPrice"></el-input>
+        <el-form-item label="专项活动特权">
+          <el-radio-group v-model="editItem.priviledgePromotion">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
         </el-form-item>
-        <el-form-item label="priviledgeBirthday">
-          <el-input v-model="editItem.priviledgeBirthday"></el-input>
+        <el-form-item label="会员价格特权">
+          <el-radio-group v-model="editItem.priviledgeMemberPrice">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
         </el-form-item>
-        <el-form-item label="note">
+        <el-form-item label="生日特权">
+          <el-radio-group v-model="editItem.priviledgeBirthday">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="备注">
           <el-input v-model="editItem.note"></el-input>
         </el-form-item>
       </el-form>

@@ -20,7 +20,7 @@
       <el-table-column prop="name"
                        label="name"></el-table-column>
       <el-table-column prop="chargeType"
-                       label="chargeType"></el-table-column>
+                       label="chargeType（0：按重量；1：按件数）"></el-table-column>
       <el-table-column prop="continmeFee"
                        label="continmeFee"></el-table-column>
       <el-table-column prop="continueWeight"
