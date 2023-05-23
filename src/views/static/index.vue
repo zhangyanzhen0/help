@@ -6,11 +6,11 @@
                  class="route-button">
       <el-button type="danger"
                  round
-                 plain>{{ route.name }}</el-button>
+                 plain>#{{ route.name }}</el-button>
     </router-link>
   </div>
 </template>
-
+// 这里不用改了，在路由里面添加你的条目这里会自动多一个按钮，点击即可进入你的路由
 <script>
 export default {
   data () {
@@ -47,8 +47,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  height: 100vh; /* 可以根据需要设置高度 */
+  gap: 100px; /* Reduce the gap to 5 pixels */
+  height: 100vh;
 }
 
 .print-button {
