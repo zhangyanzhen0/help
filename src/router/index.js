@@ -18,14 +18,11 @@ const routes = [
     component: Index, //key:value  默认//页面组件 components 普通组件 页面组件和普通组件是一对多
   },
   {
-<<<<<<< HEAD
     path: '/ums_admin', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'ums_admin', //命名路由
     component: () => import('@/views/admin/ums_admin.vue'),
   },
   {
-=======
->>>>>>> c0f89043bcedf4c44adc67da265b2222c43931d2
     path: '/pms_product_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'pms_product_category', //命名路由
     component: () => import('@/views/admin/pms_product_category.vue'),
@@ -49,6 +46,16 @@ const routes = [
     path: '/pms_feight_template', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'pms_feight_template', //命名路由
     component: () => import('@/views/admin/pms_feight_template.vue'),
+  },
+  {
+    path: '/pmsproduct', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'pmsproduct', //命名路由
+    component: () => import('@/views/admin/pmsproduct.vue'),
+  },
+  {
+    path: '/pms_product_attribute_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'pms_product_attribute_category', //命名路由
+    component: () => import('@/views/admin/pms_product_attribute_category.vue'),
   },
   {
     path: '/sms_flash_promotion', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf

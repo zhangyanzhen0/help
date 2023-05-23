@@ -47,7 +47,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 100px; /* Reduce the gap to 5 pixels */
+  gap: 10px; /* Reduce the gap to 5 pixels */
   height: 100vh;
 }
 
