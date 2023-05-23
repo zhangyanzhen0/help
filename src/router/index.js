@@ -87,6 +87,11 @@ const routes = [
     name: 'sms_flash_promotion_session',
     component: () => import('@/views/admin/sms_flash_promotion_session.vue'),
   },
+    {
+    path: '/ums_resource_category', 
+    name: 'ums_resource_category', 
+    component: () => import('@/views/admin/ums_resource_category.vue'),
+  },
   {
     path: '/login',
     name: 'login',
