@@ -27,6 +27,11 @@ const routes = [
     name: 'cms_member_report', //命名路由
     component: () => import('@/views/admin/cms_member_report.vue'),
   },
+              {
+                path: '/returnreason',
+                name: 'oms_returnreason',
+                component: () => import('@/views/admin/returnreason.vue')
+            },
   {
     path: '/oms_company_address', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'oms_company_address', //命名路由
