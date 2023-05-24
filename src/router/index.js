@@ -112,11 +112,11 @@ const routes = [
     name: 'ums_resource_category', 
     component: () => import('@/views/admin/ums_resource_category.vue'),
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/static/login.vue'), // 懒加载
-  },
+  // {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: () => import('@/views/static/login.vue'), // 懒加载
+  // },
   {
     path: '/:pathMatch(.*)*',
     name: '404',

@@ -100,5 +100,4 @@ const Page = async (data) => {
     hideLoading() // 隐藏加载动画
   }
 }
-
 export default { One, Del, Edit, Add, Page }
