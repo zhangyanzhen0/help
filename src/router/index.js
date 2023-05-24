@@ -117,6 +117,11 @@ const routes = [
     name: 'ums_resource_category', 
     component: () => import('@/views/admin/ums_resource_category.vue'),
   },
+    {
+        path: '/pms_album',
+        name: 'pms_album',
+        component: () => import('@/views/admin/pms_album.vue'),
+    },
   // {
   //   path: '/login',
   //   name: 'login',
