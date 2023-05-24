@@ -23,6 +23,11 @@ const routes = [
     component: () => import('@/views/admin/ums_admin.vue'),
   },
   {
+    path: '/pms_brand', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'pms_brand', //命名路由
+    component: () => import('@/views/admin/pms_brand.vue'),
+  },
+  {
     path: '/cms_member_report', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'cms_member_report', //命名路由
     component: () => import('@/views/admin/cms_member_report.vue'),
