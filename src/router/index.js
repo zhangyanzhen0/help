@@ -42,6 +42,11 @@ const routes = [
     name: 'ums_member_task', //命名路由
     component: () => import('@/views/admin/ums_member_task.vue'),
   },
+              {
+                path: '/oms-order-setting',
+                name: 'oms-order-setting',
+                component: () => import('@/views/admin/oms-order-setting.vue')
+            },
   {
     path: '/cms_help_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'cms_help_category', //命名路由
