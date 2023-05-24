@@ -17,7 +17,6 @@
     "pinia-plugin-persist": "^1.0.0",
     "three": "^0.134.0",
     "troisjs": "^0.3.4",
-    "vite": "^4.3.8",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
