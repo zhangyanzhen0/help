@@ -1,4 +1,4 @@
-import instance from "./axios";
+import instance from "./index";
 
 export default {
   //获取列表

@@ -28,7 +28,6 @@
       <el-table-column prop="subTitle"
                        label="subTitle"></el-table-column>
 
-      
       <el-table-column width="150rpx"
                        label="操作">
         <template #default="{ row }">
@@ -94,7 +93,7 @@
                v-model="editDialogVisible"
                center
                @close="editDialogVisible = false">
-      <el-form >
+      <el-form>
         <el-form-item label="id">
           <el-input v-model="editItem.id"></el-input>
         </el-form-item>
@@ -139,7 +138,7 @@
   </div>
 </template>
 <script>
-import api from '@/http/cms-prefrence-area.js'
+import api from '@/http/cms_prefrence_area.js'
 import {
   ElMessage,
   ElMessageBox,
@@ -325,14 +324,14 @@ export default {
     addAPI () {
       ElMessage.success("添加数据ing");
       const newAPI = {
-  "id": 0,
-  "name": "",
-  "pic": "",
-  "showStatus": 0,
-  "sort": 0,
-  "subTitle": "",
-  "isNew":true
-}
+        "id": 0,
+        "name": "",
+        "pic": "",
+        "showStatus": 0,
+        "sort": 0,
+        "subTitle": "",
+        "isNew": true
+      }
       this.tableData.push(newAPI);
       const lastPage = Math.ceil(this.tableData.length / this.pageSize);
       this.handlePageChange(lastPage);

@@ -1,4 +1,4 @@
-import instance from "./axios";
+import instance from "./index";
 const settingPage=(data)=>{
     //返回Promise对象
    return instance.request({

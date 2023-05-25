@@ -1,14 +1,22 @@
 <template>
-  <div>
+  <div class="search">
     <el-input v-model="searchText"
               placeholder="请输入搜索关键字"
               clearable
               @clear="clearSearch"
               @keyup.enter="performSearch"
               style="margin-bottom: 20px">
+
+      <template #prepend>
+        <el-icon>
+          <Search />
+        </el-icon>
+      </template>
     </el-input>
 
     <el-table :data="paginatedData"
+  
+              highlight-current-row
               :header-cell-style="{ background: '#eef1f6', color: '#606266' }"
               borde>
       <el-table-column prop="id"
@@ -18,16 +26,16 @@
       <el-table-column prop="icon"
                        label="图标样式">
         <template #default="{ row }">
-          <img v-if="isNaN(Number(row.icon, 10))"
-               :src="row.icon"
-               alt="图标"
-               width="30"
-               height="30" />
-          <img v-else
-               src="../../imgs/1.png"
-               alt="图标"
-               width="30"
-               height="30" />
+          <el-image :src="row.icon">
+            <template #error>
+              <div class="image-slot">
+                <el-icon>
+                  <Picture />
+                </el-icon>
+              </div>
+            </template>
+          </el-image>
+
         </template>
       </el-table-column>
 
@@ -92,11 +100,14 @@
 
     <el-pagination :current-page="currentPage"
                    :page-size="pageSize"
+                   background
                    :total="filteredtableData.length"
                    @current-change="handlePageChange">
     </el-pagination>
 
     <el-dialog class="form"
+               center
+               width="30%"
                v-model="editDialogVisible"
                @close="editDialogVisible = false">
       <el-form>
@@ -127,7 +138,8 @@
         </el-form-item>
 
         <el-form-item label="主题数量">
-          <el-input-number v-model="editItem.subjectCount"></el-input-number>
+          <el-input-number v-model="editItem.subjectCount"
+                           min="0"></el-input-number>
         </el-form-item>
 
         <el-form-item label="显示状态">
@@ -141,12 +153,12 @@
           <el-input-number v-model="editItem.sort"></el-input-number>
         </el-form-item>
       </el-form>
-      <div slot="footer">
+      <template #footer>
         <el-button @click="editDialogVisible = false">取消</el-button>
 
         <el-button type="primary"
                    @click="saveEdit">保存</el-button>
-      </div>
+      </template>
     </el-dialog>
   </div>
   <div class="button">
@@ -170,7 +182,7 @@
 </template>
 <script>
 import api from '@/http/cms_topic_category.js'
-import { ElMessage, ElMessageBox, roleTypes } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const dataCache = {
   tableData: [],
@@ -179,16 +191,16 @@ export default {
   data () {
     return {
       nameOptions: [
-        { label: '家具', value: '家具' },
-        { label: '保健品', value: '保健品' },
-        { label: '饮料', value: '饮料' },
-        { label: '电子产品', value: '电子产品' },
-        { label: '服装', value: '服装' },
-        { label: '美妆', value: '美妆' },
-        { label: '食品', value: '食品' },
-        { label: '汽车', value: '汽车' },
-        { label: '旅游', value: '旅游' },
-        { label: '体育用品', value: '体育用品' },
+        { label: '宠物', value: '宠物' },
+        { label: '影音', value: '影音' },
+        { label: '好物', value: '好物' },
+        { label: '玩机', value: '玩机' },
+        { label: '安卓', value: '安卓' },
+        { label: '游戏', value: '游戏' },
+        { label: '美化', value: '美化' },
+        { label: '硬件', value: '硬件' },
+        { label: '软件', value: '软件' },
+        { label: '万物', value: '万物' },
       ],
       json: {
         current: 1,
@@ -204,11 +216,12 @@ export default {
       editItem: {},
       selectedRow: null,
 
-
       // 其他的 data 属性
     }
   },
   computed: {
+
+
     paginatedData () {
       const startIndex = (this.currentPage - 1) * this.pageSize
       const endIndex = startIndex + this.pageSize
@@ -410,11 +423,10 @@ export default {
       this.ping = !this.ping
       if (this.ping) {
         this.SortUp()
-        ElMessage.success("顺序排序")
+        ElMessage.success('顺序排序')
       } else {
         this.SortDown()
-        ElMessage.success("逆序排序")
-
+        ElMessage.success('逆序排序')
       }
     },
   },
@@ -426,6 +438,7 @@ export default {
 
 <style>
 body {
+  color: #e40d0d;
   margin: 0;
   padding: 0;
   background-image: url("@/imgs/keli.png");
@@ -438,4 +451,30 @@ body {
   justify-content: center;
   align-items: center;
 }
+/* 弹窗 */
+.el-dialog,
+.el-pager li {
+  background-color: rgba(255, 0, 0, 0);
+  background-image: url(../../imgs/xie.webp);
+  background-size: 100% 100%;
+  color: #e40d0d;
+}
+
+.el-dialog__header {
+  padding-top: 10px !important;
+  background-color: rgb(255, 255, 255, 0);
+  border-radius: 14px 14px 0 0;
+}
+.el-dialog__body {
+  border-top: 0 !important;
+  background-color: rgba(19, 31, 59, 0);
+}
+.el-dialog__footer {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+.search {
+  margin-top: 10px;
+}
+
 </style>
