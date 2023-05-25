@@ -176,8 +176,6 @@ export default {
   // },
 
   methods:{
-   
-
     change(row){
       //TODO  发送请求到接口，修改可用状态
       // returnReason.post('mall/oms-order-return-reason/edit')

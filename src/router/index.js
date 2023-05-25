@@ -1,4 +1,4 @@
-//引入vue-router
+//引入vue_router
 import { createRouter, createWebHistory } from 'vue-router'
 //ES6  import输入  export 输出
 // 模块化 默认私有，如何被别人使用？
@@ -37,34 +37,39 @@ const routes = [
     name: 'cms_member_report', //命名路由
     component: () => import('@/views/admin/cms_member_report.vue'),
   },
-              {
-                path: '/returnreason',
-                name: 'oms_returnreason',
-                component: () => import('@/views/admin/returnreason.vue')
-            },
+  {
+    path: '/oms_order_return_reason',
+    name: 'oms_order_return_reason',
+    component: () => import('@/views/admin/oms_order_return_reason.vue'),
+  },
   {
     path: '/oms_company_address', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'oms_company_address', //命名路由
     component: () => import('@/views/admin/oms_company_address.vue'),
   },
-    {
+  {
     path: '/ums_member_task', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'ums_member_task', //命名路由
     component: () => import('@/views/admin/ums_member_task.vue'),
   },
-              {
-                path: '/oms-order-setting',
-                name: 'oms-order-setting',
-                component: () => import('@/views/admin/oms-order-setting.vue')
-            },
+  {
+    path: '/oms_order_setting',
+    name: 'oms_order_setting',
+    component: () => import('@/views/admin/oms_order_setting.vue'),
+  },
   {
     path: '/cms_help_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
     name: 'cms_help_category', //命名路由
     component: () => import('@/views/admin/cms_help_category.vue'),
   },
   {
+    path: '/cms_topic_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'cms_topic_category', //命名路由
+    component: () => import('@/views/admin/cms_topic_category.vue'),
+  },
+  {
     path: '/cms_log',
-    name: 'cms_log', 
+    name: 'cms_log',
     component: () => import('@/views/admin/cms_log.vue'),
   },
   {
@@ -83,9 +88,9 @@ const routes = [
     component: () => import('@/views/admin/ums_member_level.vue'),
   },
   {
-    path: '/cms-prefrence-area', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
-    name: 'cms-prefrence-area', //命名路由
-    component: () => import('@/views/admin/cms-prefrence-area.vue'),
+    path: '/cms_prefrence_area', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'cms_prefrence_area', //命名路由
+    component: () => import('@/views/admin/cms_prefrence_area.vue'),
   },
   {
     path: '/sms_coupon', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
@@ -98,9 +103,9 @@ const routes = [
     component: () => import('@/views/admin/pms_feight_template.vue'),
   },
   {
-    path: '/pmsproduct', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
-    name: 'pmsproduct', //命名路由
-    component: () => import('@/views/admin/pmsproduct.vue'),
+    path: '/pms_product', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
+    name: 'pms_product', //命名路由
+    component: () => import('@/views/admin/pms_product.vue'),
   },
   {
     path: '/pms_product_attribute_category', //访问路径 http://127.0.0.1:5173/cx/XfDGdOkjVo7deIxQjurcf8BEnNf
@@ -132,16 +137,16 @@ const routes = [
     name: 'sms_flash_promotion_session',
     component: () => import('@/views/admin/sms_flash_promotion_session.vue'),
   },
-    {
-    path: '/ums_resource_category', 
-    name: 'ums_resource_category', 
+  {
+    path: '/ums_resource_category',
+    name: 'ums_resource_category',
     component: () => import('@/views/admin/ums_resource_category.vue'),
   },
-    {
-        path: '/pms_album',
-        name: 'pms_album',
-        component: () => import('@/views/admin/pms_album.vue'),
-    },
+  {
+    path: '/pms_album',
+    name: 'pms_album',
+    component: () => import('@/views/admin/pms_album.vue'),
+  },
   // {
   //   path: '/login',
   //   name: 'login',
