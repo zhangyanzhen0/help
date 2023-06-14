@@ -4,7 +4,7 @@ const One = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-help-category/one/' + id,
+      url: '/mall/cms-help/one/' + id,
       method: 'get',
     })
     return response
@@ -17,7 +17,20 @@ const Del = async (id) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-help-category/del/' + id,
+      url: '/mall/cms-help/del/' + id,
+      method: 'get',
+    })
+    return response
+  } catch (error) {
+    throw error
+  }
+}
+
+const getCmsHelpsByCategoryId = async (id) => {
+
+  try {
+    const response = await api.request({
+      url: '/mall/cms-help/getCmsHelps/'+id ,
       method: 'get',
     })
     return response
@@ -30,7 +43,7 @@ const Edit = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-help-category/edit',
+      url: '/mall/cms-help/edit',
       method: 'post',
       data,
     })
@@ -43,7 +56,7 @@ const Edit = async (data) => {
 const Add = async (data) => {
   try {
     const response = await api.request({
-      url: '/mall/cms-help-category/add',
+      url: '/mall/cms-help/add',
       method: 'post',
       data,
     })
@@ -57,7 +70,7 @@ const Page = async (data) => {
 
   try {
     const response = await api.request({
-      url: '/mall/cms-help-category/page',
+      url: '/mall/cms-help/page',
       method: 'post',
       data,
     })
@@ -67,4 +80,4 @@ const Page = async (data) => {
   }
 }
 
-export default { One, Del, Edit, Add, Page }
+export default { One, Del, getCmsHelpsByCategoryId, Edit, Add, Page }
